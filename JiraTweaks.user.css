@@ -1,0 +1,54 @@
+/* ==UserStyle==
+@name           Jira Tweaks
+@namespace      github.com/NickLambellGCH/Jira-Tweaks
+@homepageURL    https://github.com/NickLambellGCH/Jira-Tweaks
+@description    Tweaks for Jira Software Cloud
+@author         NickLambellGCH
+@version        1.1.0
+@preprocessor   less
+
+@var text column-width "Board Column Width" 350px
+
+==/UserStyle== */
+@-moz-document regexp("https:\\/\\/gchlol\\.atlassian\\.net\\/jira\\/software\\/c\\/projects\\/[^\\/]+\\/boards\\/.+") {
+    div[data-testid="platform-board-kit.ui.board.scroll.board-scroll"] {
+        div[data-testid="platform-board-kit.ui.swimlane.swimlane-columns"] > div,
+        & > section > div > div,
+        & > section > div > div > div {
+            grid-template-columns: repeat(auto-fit, minmax(@column-width, 1fr));
+        }
+
+        div[data-testid="platform-board-kit.ui.column.draggable-column.styled-wrapper"],
+        & > section > div > div > div > div[draggable="true"] {
+            min-width: @column-width;
+        }
+
+        div[data-testid="platform-board-kit.ui.column.draggable-column.styled-wrapper"] > div {
+            border: 1px solid #444c56;
+        }
+
+        h2[data-test-id="platform-board-kit.common.ui.column-header.editable-title.column-title.column-title"] {
+            width: 100%;
+
+            div[data-testid="platform-board-kit.common.ui.column-header.editable-title.column-title.column-name"] {
+                align-self: flex-end;
+            }
+
+            & > div > div {
+                border-radius: 5px;
+                padding: 1px 3px;
+
+                background: #343a42;
+            }
+        }
+    }
+
+    fieldset[data-testid="filters.ui.filters.assignee.stateless.assignee-filter"] > div {
+        gap: 0;
+        transition: all .1s ease-out;
+
+        &:hover {
+            gap: 5px;
+        }
+    }
+}
