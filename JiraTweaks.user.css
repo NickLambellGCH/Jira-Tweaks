@@ -11,7 +11,7 @@
 @var text column-width "Board Column Width" 350px
 
 ==/UserStyle== */
-@-moz-document regexp("https:\\/\\/gchlol\\.atlassian\\.net\\/jira\\/software\\/c\\/projects\\/[^\\/]+\\/boards\\/.+") {
+@-moz-document regexp("https:\/\/[^\/]+\.atlassian\.net\/jira\/.+\/projects\/[^\/]+\/boards\/.+") {
     div[data-testid="platform-board-kit.ui.board.scroll.board-scroll"] {
         div[data-testid="platform-board-kit.ui.swimlane.swimlane-columns"] > div,
         & > section > div > div,
