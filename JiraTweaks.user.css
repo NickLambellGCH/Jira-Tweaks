@@ -2,7 +2,7 @@
 @name           Jira Tweaks
 @description    Tweaks for Jira Software Cloud
 @author         NickLambellGCH
-@version        1.1.2
+@version        1.1.3
 @namespace      https://github.com/NickLambellGCH
 @homepageURL    https://github.com/NickLambellGCH/Jira-Tweaks
 @updateURL      https://github.com/NickLambellGCH/Jira-Tweaks/raw/main/JiraTweaks.user.css
@@ -13,10 +13,15 @@
 ==/UserStyle== */
 @-moz-document regexp("https:\/\/[^\/]+\.atlassian\.net\/jira\/.+\/projects\/[^\/]+\/boards\/.+") {
     div[data-testid="platform-board-kit.ui.board.scroll.board-scroll"] {
+        div[data-testid="platform-board-kit.ui.swimlane.swimlane-wrapper"] {
+            padding-left: 0 !important;
+        }
+
         div[data-testid="platform-board-kit.ui.swimlane.swimlane-columns"] > div,
         & > section > div > div,
         & > section > div > div > div {
             grid-template-columns: repeat(auto-fit, minmax(@column-width, 1fr));
+            gap: 0.5rem;
         }
 
         div[data-testid="platform-board-kit.ui.column.draggable-column.styled-wrapper"],
@@ -25,8 +30,8 @@
             min-width: @column-width;
         }
 
-        div[data-testid="platform-board-kit.ui.column.draggable-column.styled-wrapper"] > div {
-            border: 1px solid #444c56;
+        & > section > div > div > div > div[data-drop-target-for-element="true"] > div {
+            margin: 0;
         }
 
         h2[data-test-id="platform-board-kit.common.ui.column-header.editable-title.column-title.column-title"] {
